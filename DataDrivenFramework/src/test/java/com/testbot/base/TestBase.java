@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 	/*
@@ -20,45 +23,62 @@ public class TestBase {
 	 */
 	public static WebDriver driver;// will be initializing in runtime to handle the object.So, whatever browser
 									// information will pass from config file.
-	Properties config = new Properties();
-	Properties OR = new Properties();
+	public static Properties config = new Properties();
+	public static Properties OR = new Properties();
 	FileInputStream fis = null, fis1 = null;
 
+	@BeforeSuite
 	public void setUp() {
 		if (driver == null) {
+
 			try {
 				fis = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
 				fis1 = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
-
-			} catch (FileNotFoundException e1) {
+			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
 			try {
 				config.load(fis);
-				config.load(fis1);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				OR.load(fis1);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			if (config.getProperty("browser").equals("firefox")) {
+				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 			} else if (config.getProperty("browser").equals("chrome")) {
+				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 			} else if (config.getProperty("browser").equals("edge")) {
+				WebDriverManager.edgedriver().setup();
 				driver = new EdgeDriver();
 			}
-		}
-			Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait"));
+
+			Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait")); //
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitTimeInSeconds));
 
 		}
+	}
 
+	@AfterSuite
 	public void tearDown() {
 		if (driver != null)
 			driver.quit();

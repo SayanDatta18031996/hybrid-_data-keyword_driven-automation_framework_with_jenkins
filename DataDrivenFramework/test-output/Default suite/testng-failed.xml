@@ -6,6 +6,8 @@
       <class name="com.testbot.testcases.LoginTest">
         <methods>
           <include name="LoginAsManager"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- com.testbot.testcases.LoginTest -->
     </classes>
