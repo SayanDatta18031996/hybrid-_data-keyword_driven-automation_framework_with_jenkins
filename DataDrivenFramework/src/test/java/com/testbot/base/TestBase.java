@@ -12,13 +12,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 public class TestBase {
 	/*
 	 * WebDriver - done Properties - done Logs - log4j jar, .log, log4j.properties,
-	 * Logger ExtentReports DB Excel Mail ReportNG, ExtentReports Jenkins
+	 * Logger ExtentReports DB Excel Mail ReportNG, ExtentReports, Jenkins
 	 * 
 	 */
 	public static WebDriver driver;// will be initializing in runtime to handle the object.So, whatever browser
@@ -26,7 +27,7 @@ public class TestBase {
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
 	FileInputStream fis = null, fis1 = null;
-
+	//public static Logger log = LogManager.getLogger(TestBase.class);
 	@BeforeSuite
 	public void setUp() {
 		if (driver == null) {
@@ -47,6 +48,7 @@ public class TestBase {
 			}
 			try {
 				config.load(fis);
+				//log.debug("Config file loaded !!!");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -62,12 +64,15 @@ public class TestBase {
 			if (config.getProperty("browser").equals("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
+				//log.debug("Firefox launched");
 			} else if (config.getProperty("browser").equals("chrome")) {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
+				//log.debug("Chrome launched");
 			} else if (config.getProperty("browser").equals("edge")) {
 				WebDriverManager.edgedriver().setup();
 				driver = new EdgeDriver();
+				//log.debug("Edge launched");
 			}
 
 			Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait")); //

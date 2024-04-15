@@ -7,8 +7,7 @@ import com.testbot.base.TestBase;
 public class LoginTest extends TestBase {
 	@Test
 	public void LoginAsManager() throws InterruptedException {
-		System.out.println(config.getProperty("browser"));
-		System.out.println(OR.getProperty("bmlbtn"));
+		//log.debug("Inside LoginAsManager");
 		driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
 		Thread.sleep(1000);
 
