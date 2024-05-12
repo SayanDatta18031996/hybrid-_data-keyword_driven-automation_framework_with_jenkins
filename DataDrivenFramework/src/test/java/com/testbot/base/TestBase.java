@@ -20,69 +20,70 @@ import org.testng.annotations.BeforeSuite;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-    /*
-     * WebDriver - done Properties - done Logs - log4j jar, .log, log4j.properties,
-     * Logger ExtentReports DB Excel Mail ReportNG, ExtentReports, Jenkins
-     */
-    public static WebDriver driver;// will be initializing in runtime to handle the object.So, whatever browser
-                                    // information will pass from config file.
-    public static Properties config = new Properties();
-    public static Properties OR = new Properties();
-    protected Logger log = null;
+	/*
+	 * WebDriver - done Properties - done Logs - log4j jar, .log, log4j.properties,
+	 * Logger ExtentReports DB Excel Mail ReportNG, ExtentReports, Jenkins
+	 */
+	public static WebDriver driver;// will be initializing in runtime to handle the object.So, whatever browser
+									// information will pass from config file.
+	public static Properties config = new Properties();
+	public static Properties OR = new Properties();
+	protected Logger log = null;
 
-    @BeforeSuite
-    public void setUp() {
-        this.log = LogManager.getLogger(this.getClass());
-        if (driver == null) {
-            FileInputStream fisConfig = null, fisOR = null, fislog = null;
-            try {
-                fisConfig = new FileInputStream(
-                        System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties");
-                fisOR = new FileInputStream(
-                        System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
-                fislog = new FileInputStream(
-                        System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\log4j2.properties");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+	@BeforeSuite
+	public void setUp() {
+		this.log = LogManager.getLogger(this.getClass());
+		if (driver == null) {
+			FileInputStream fisConfig = null, fisOR = null, fislog = null;
+			try {
+				fisConfig = new FileInputStream(
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties");
+				fisOR = new FileInputStream(
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
+				fislog = new FileInputStream(
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\log4j2.properties");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 
-            try {
-                config.load(fisConfig);
-                log.debug("Config file loaded !!!");
-                OR.load(fisOR);
-                log.debug("OR file loaded !!!");
+			try {
+				config.load(fisConfig);
+				log.debug("Config file loaded !!!");
+				OR.load(fisOR);
+				log.debug("OR file loaded !!!");
 
-                // Configure Log4j2
-                Configurator.initialize(null, System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\log4j2.properties");
-                log.debug("Log4j2 configuration loaded !!!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+				// Configure Log4j2
+				Configurator.initialize(null,
+						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\log4j2.properties");
+				log.debug("Log4j2 configuration loaded !!!");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-            if (config.getProperty("browser").equals("firefox")) {
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-                log.debug("Firefox launched");
-            } else if (config.getProperty("browser").equals("chrome")) {
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-                log.debug("Chrome launched");
-            } else if (config.getProperty("browser").equals("edge")) {
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
-                log.debug("Edge launched");
-            }
+			if (config.getProperty("browser").equals("firefox")) {
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+				log.debug("Firefox launched");
+			} else if (config.getProperty("browser").equals("chrome")) {
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+				log.debug("Chrome launched");
+			} else if (config.getProperty("browser").equals("edge")) {
+				WebDriverManager.edgedriver().setup();
+				driver = new EdgeDriver();
+				log.debug("Edge launched");
+			}
 
-            Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait"));
-            driver.get(config.getProperty("testsiteurl"));
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitTimeInSeconds));
-        }
-    }
+			Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait"));
+			driver.get(config.getProperty("testsiteurl"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitTimeInSeconds));
+		}
+	}
 
-    @AfterSuite
-    public void tearDown() {
-        if (driver != null)
-            driver.quit();
-    }
+	@AfterSuite
+	public void tearDown() {
+		if (driver != null)
+			driver.quit();
+	}
 }

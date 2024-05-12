@@ -10,6 +10,7 @@ public class LoginTest extends TestBase {
 		log.debug("Inside LoginAsManager");
 		driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
 		Thread.sleep(1000);
+		log.info("LoginAsManager executed successfully");
 
 	}
 }
