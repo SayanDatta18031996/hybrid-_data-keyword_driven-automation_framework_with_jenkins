@@ -1,0 +1,3 @@
+10:48:38.529 IST [main] DEBUG com.testbot.testcases.LoginTest - Config file loaded !!!
+10:48:41.983 IST [main] DEBUG com.testbot.testcases.LoginTest - Chrome launched
+10:48:42.873 IST [main] DEBUG com.testbot.testcases.LoginTest - Inside LoginAsManager
