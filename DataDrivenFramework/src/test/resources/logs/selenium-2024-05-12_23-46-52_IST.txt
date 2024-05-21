@@ -1,3 +1,0 @@
-23:46:52.045 IST [main] DEBUG com.testbot.testcases.LoginTest - Log4j2 configuration loaded !!!
-23:46:54.902 IST [main] DEBUG com.testbot.testcases.LoginTest - Chrome launched
-23:46:57.039 IST [main] DEBUG com.testbot.testcases.LoginTest - Inside LoginAsManager

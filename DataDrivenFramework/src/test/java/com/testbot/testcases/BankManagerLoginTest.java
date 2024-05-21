@@ -1,16 +1,18 @@
 package com.testbot.testcases;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.testbot.base.TestBase;
 
-public class LoginTest extends TestBase {
+public class BankManagerLoginTest extends TestBase {
 	@Test
 	public void LoginAsManager() throws InterruptedException {
 		log.debug("Inside LoginAsManager");
 		driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
-		Thread.sleep(1000);
+		Assert.assertTrue(isElementPresent(By.xpath(OR.getProperty("addCustomerNav"))), "Login not successfull");
 		log.info("LoginAsManager executed successfully");
-
+		Thread.sleep(3000);
+		
 	}
 }
