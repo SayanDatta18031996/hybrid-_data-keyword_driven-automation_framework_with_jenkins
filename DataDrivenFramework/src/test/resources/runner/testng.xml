@@ -5,10 +5,11 @@
     <classes>
       <class name="com.testbot.testcases.BankManagerLoginTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
   <test name="AddcustomerTest">
     <classes>
       <class name="com.testbot.testcases.AddCustomerTest"/>
     </classes>
   </test>
-</suite> <!-- Suite -->
+</suite>
+ 

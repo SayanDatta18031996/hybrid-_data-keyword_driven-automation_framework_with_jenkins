@@ -3,7 +3,6 @@ package com.testbot.base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -16,9 +15,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
+import com.testbot.utilities.ExcelReader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -31,7 +31,9 @@ public class TestBase {
 									// information will pass from config file.
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
-	protected Logger log = null;
+	public static Logger log = null;
+	public static ExcelReader excel=new ExcelReader(System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+	
 
 	@BeforeSuite
 	public void setUp() {

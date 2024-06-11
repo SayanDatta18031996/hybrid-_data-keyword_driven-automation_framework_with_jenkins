@@ -1,5 +1,0 @@
-23:11:08.313 IST [main] DEBUG com.testbot.testcases.BankManagerLoginTest - Log4j2 configuration loaded !!!
-23:11:11.611 IST [main] DEBUG com.testbot.testcases.BankManagerLoginTest - Chrome launched
-23:11:12.639 IST [main] DEBUG com.testbot.testcases.BankManagerLoginTest - Inside LoginAsManager
-23:11:13.403 IST [main] DEBUG com.testbot.testcases.BankManagerLoginTest - element found
-23:11:13.408 IST [main] INFO  com.testbot.testcases.BankManagerLoginTest - LoginAsManager executed successfully

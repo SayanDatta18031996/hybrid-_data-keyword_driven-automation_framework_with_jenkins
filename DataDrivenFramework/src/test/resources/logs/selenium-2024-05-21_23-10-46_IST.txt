@@ -1,4 +1,0 @@
-23:10:46.095 IST [main] DEBUG com.testbot.testcases.AddCustomerTest - Log4j2 configuration loaded !!!
-23:10:49.949 IST [main] DEBUG com.testbot.testcases.AddCustomerTest - Chrome launched
-23:10:53.351 IST [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
-23:10:53.367 IST [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels

@@ -1,5 +1,0 @@
-23:13:06.366 IST [main] DEBUG com.testbot.testcases.AddCustomerTest - Log4j2 configuration loaded !!!
-23:13:09.718 IST [main] DEBUG com.testbot.testcases.AddCustomerTest - Chrome launched
-23:13:12.122 IST [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
-23:13:12.132 IST [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
-23:13:13.211 IST [main] INFO  com.testbot.testcases.AddCustomerTest - Getting locator for first name of customer

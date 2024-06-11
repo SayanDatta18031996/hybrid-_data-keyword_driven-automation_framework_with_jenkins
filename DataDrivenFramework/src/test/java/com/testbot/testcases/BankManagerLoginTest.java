@@ -8,11 +8,9 @@ import com.testbot.base.TestBase;
 public class BankManagerLoginTest extends TestBase {
 	@Test
 	public void LoginAsManager() throws InterruptedException {
-		log.debug("Inside LoginAsManager");
+		log.info("Inside LoginAsManager");
 		driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
 		Assert.assertTrue(isElementPresent(By.xpath(OR.getProperty("addCustomerNav"))), "Login not successfull");
-		log.info("LoginAsManager executed successfully");
-		Thread.sleep(3000);
-		
+		log.info("LoginAsManager executed successfully");	
 	}
 }

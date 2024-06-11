@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Data Driven Basics]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="LoginTest(failed)">
+  <test thread-count="5" name="BankManagerLoginTest(failed)">
     <classes>
-      <class name="com.testbot.testcases.LoginTest">
+      <class name="com.testbot.testcases.BankManagerLoginTest">
         <methods>
           <include name="LoginAsManager"/>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.testbot.testcases.LoginTest -->
+      </class> <!-- com.testbot.testcases.BankManagerLoginTest -->
     </classes>
-  </test> <!-- LoginTest(failed) -->
+  </test> <!-- BankManagerLoginTest(failed) -->
 </suite> <!-- Failed suite [Data Driven Basics] -->
