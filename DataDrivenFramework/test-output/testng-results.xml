@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
+    <line>
+      <![CDATA[LoginAsManager executed successfully]]>
+    </line>
   </reporter-output>
-  <suite started-at="2024-06-11T13:37:04Z" name="Data Driven Basics" finished-at="2024-06-11T13:37:09Z" duration-ms="4890">
+  <suite started-at="2024-06-14T10:24:48Z" name="Data Driven Basics" finished-at="2024-06-14T10:24:49Z" duration-ms="1222">
     <groups>
     </groups>
-    <test started-at="2024-06-11T13:37:04Z" name="BankManagerLoginTest" finished-at="2024-06-11T13:37:05Z" duration-ms="369">
+    <test started-at="2024-06-14T10:24:48Z" name="BankManagerLoginTest" finished-at="2024-06-14T10:24:49Z" duration-ms="335">
       <class name="com.testbot.testcases.BankManagerLoginTest">
-        <test-method signature="LoginAsManager()[pri:0, instance:com.testbot.testcases.BankManagerLoginTest@4c0884e8]" started-at="2024-06-11T13:37:04Z" name="LoginAsManager" finished-at="2024-06-11T13:37:05Z" duration-ms="290" status="PASS">
+        <test-method signature="LoginAsManager()[pri:0, instance:com.testbot.testcases.BankManagerLoginTest@4f186450]" started-at="2024-06-14T10:24:48Z" name="LoginAsManager" finished-at="2024-06-14T10:24:49Z" duration-ms="282" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[LoginAsManager executed successfully]]>
+            </line>
           </reporter-output>
         </test-method> <!-- LoginAsManager -->
       </class> <!-- com.testbot.testcases.BankManagerLoginTest -->
     </test> <!-- BankManagerLoginTest -->
-    <test started-at="2024-06-11T13:37:05Z" name="AddcustomerTest" finished-at="2024-06-11T13:37:09Z" duration-ms="4464">
+    <test started-at="2024-06-14T10:24:49Z" name="AddcustomerTest" finished-at="2024-06-14T10:24:49Z" duration-ms="845">
       <class name="com.testbot.testcases.AddCustomerTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.testbot.testcases.AddCustomerTest@4bee18dc]" started-at="2024-06-11T13:36:59Z" name="setUp" finished-at="2024-06-11T13:37:04Z" duration-ms="5237" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:42Z" name="setUp" finished-at="2024-06-14T10:24:48Z" duration-ms="5793" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@4bee18dc]" started-at="2024-06-11T13:37:05Z" name="addCustomer" data-provider="getData" finished-at="2024-06-11T13:37:09Z" duration-ms="4403" status="PASS">
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:49Z" name="addCustomer" data-provider="getData" finished-at="2024-06-14T10:24:49Z" duration-ms="773" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -36,11 +42,16 @@
                 <![CDATA[123.0]]>
               </value>
             </param>
+            <param index="3">
+              <value>
+                <![CDATA[Customer added successfully]]>
+              </value>
+            </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addCustomer -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testbot.testcases.AddCustomerTest@4bee18dc]" started-at="2024-06-11T13:37:09Z" name="tearDown" finished-at="2024-06-11T13:37:10Z" duration-ms="382" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:49Z" name="tearDown" finished-at="2024-06-14T10:24:50Z" duration-ms="421" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

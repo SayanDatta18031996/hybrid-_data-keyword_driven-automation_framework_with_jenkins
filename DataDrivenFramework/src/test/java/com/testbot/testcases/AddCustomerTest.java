@@ -1,7 +1,10 @@
 package com.testbot.testcases;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.testbot.base.TestBase;
@@ -9,7 +12,7 @@ import com.testbot.base.TestBase;
 public class AddCustomerTest extends TestBase {
 
 	@Test(dataProvider = "getData")
-	public void addCustomer(String FirstName, String LastName, String postCode) throws InterruptedException {
+	public void addCustomer(String FirstName, String LastName, String postCode, String alertText) throws InterruptedException {
 		log.info("Getting locator for addCustomer tab");
 		WebElement  addCustomerNav= driver.findElement(By.xpath(OR.getProperty("addCustomerNav")));
 		addCustomerNav.click();
@@ -22,7 +25,11 @@ public class AddCustomerTest extends TestBase {
 		postCodeElement.sendKeys(postCode);
 		WebElement addCustomerButton= driver.findElement(By.xpath(OR.getProperty("addCustomerButton")));
 		addCustomerButton.click();
-		Thread.sleep(3000);
+		Alert alert= wait.until(ExpectedConditions.alertIsPresent());
+		log.info("Alert present");
+		Assert.assertTrue(alert.getText().contains(alertText));
+		alert.accept();
+		Assert.fail("Alert not found");//manually failed the test
 	}
 
 	@DataProvider
