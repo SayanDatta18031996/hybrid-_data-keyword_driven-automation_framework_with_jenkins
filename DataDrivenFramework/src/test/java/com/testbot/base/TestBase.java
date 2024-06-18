@@ -21,36 +21,55 @@ import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.testbot.utilities.ExcelReader;
 import com.testbot.utilities.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-	/*
-	 * WebDriver - done Properties - done Logs - log4j jar, .log, log4j.properties,
-	 * Logger ExtentReports DB Excel Mail ReportNG, ExtentReports, Jenkins
-	 */
-	public static WebDriver driver;// will be initializing in runtime to handle the object.So, whatever browser
-									// information will pass from config file.
+
+	// WebDriver instance to control the browser
+	public static WebDriver driver;
+
+	// Properties objects to store configuration and Object Repository
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
+
+	// Logger instance for logging
 	public static Logger log = null;
-	public static ExcelReader excel=new ExcelReader(System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+
+	// ExcelReader instance to read test data from Excel files
+	public static ExcelReader excel = new ExcelReader(
+			System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+
+	// WebDriverWait instance for explicit waits
 	public static WebDriverWait wait;
-	public ExtentReports reports= ExtentManager.getInstance();
+
+	// ExtentReports instance for generating test reports
+	public ExtentReports reports = ExtentManager.getInstance();
+
+	// ExtentTest instance for logging individual test steps
 	public static ExtentTest test;
 
 	@BeforeSuite
 	public void setUp() {
+		// Initialize the logger
 		this.log = LogManager.getLogger(this.getClass());
+
+		// Check if the driver is not already initialized
 		if (driver == null) {
 			FileInputStream fisConfig = null, fisOR = null, fislog = null;
 			try {
+				// Load configuration file
 				fisConfig = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties");
+
+				// Load Object Repository file
 				fisOR = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
+
+				// Load Log4j2 properties file
 				fislog = new FileInputStream(
 						System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\log4j2.properties");
 			} catch (FileNotFoundException e) {
@@ -58,6 +77,7 @@ public class TestBase {
 			}
 
 			try {
+				// Load properties from configuration and OR files
 				config.load(fisConfig);
 				log.debug("Config file loaded !!!");
 				OR.load(fisOR);
@@ -71,6 +91,7 @@ public class TestBase {
 				e.printStackTrace();
 			}
 
+			// Initialize the browser based on the value from the configuration file
 			if (config.getProperty("browser").equals("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
@@ -85,28 +106,64 @@ public class TestBase {
 				log.debug("Edge launched");
 			}
 
+			// Set implicit and explicit wait times
 			Integer implicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("implicit.wait"));
 			Integer explicitWaitTimeInSeconds = Integer.parseInt(config.getProperty("explicit.wait"));
+
+			// Navigate to the test site URL from the configuration file
 			driver.get(config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitTimeInSeconds));
-			wait=new WebDriverWait(driver, Duration.ofSeconds(explicitWaitTimeInSeconds));
+			wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitTimeInSeconds));
 		}
 	}
-	
-public boolean isElementPresent(By by) {
-	try {
-		driver.findElement(by);
-		log.debug("element found");
-		return true;
-	}catch(NoSuchElementException e) {
-		log.debug("element not found");
-		return false;
+
+	// Utility method to check if an element is present on the page
+	public boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			log.debug("element found");
+			return true;
+		} catch (NoSuchElementException e) {
+			log.debug("element not found");
+			return false;
+		}
 	}
-}
+
+	public void clicking(String locator) {
+		if (locator.endsWith("_css")) {
+			driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
+		} else if (locator.endsWith("_xpath")) {
+			driver.findElement(By.xpath(OR.getProperty(locator))).click();
+			test.log(Status.INFO, "Clicking on: "+locator);
+		} else if (locator.endsWith("_class")) {
+			driver.findElement(By.className(OR.getProperty(locator))).click();
+		} else if (locator.endsWith("_id")) {
+			driver.findElement(By.id(OR.getProperty(locator))).click();
+		} else {
+			driver.findElement(By.linkText(OR.getProperty(locator))).click();
+		}
+	}
+
+	public void typing(String locator, String value) {
+		if (locator.endsWith("_css")) {
+			driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
+			test.log(Status.INFO, "Typing on: "+locator+" Entered Value is: "+ value);
+		} else if (locator.endsWith("_xpath")) {
+			driver.findElement(By.xpath(OR.getProperty(locator))).sendKeys(value);
+			test.log(Status.INFO, "Typing on: "+locator+" Entered Value is: "+ value);
+		} else if (locator.endsWith("_class")) {
+			driver.findElement(By.className(OR.getProperty(locator))).sendKeys(value);
+		} else if (locator.endsWith("_id")) {
+			driver.findElement(By.id(OR.getProperty(locator))).sendKeys(value);
+		} else {
+			driver.findElement(By.linkText(OR.getProperty(locator))).sendKeys(value);
+		}
+	}
 
 	@AfterSuite
 	public void tearDown() {
+		// Quit the browser if it is not null
 		if (driver != null)
 			driver.quit();
 	}

@@ -9,17 +9,32 @@ import com.testbot.base.TestBase;
 public class BankManagerLoginTest extends TestBase {
 	@Test
 	public void LoginAsManager() throws InterruptedException {
-		//this line uses as a flag which will allow to run html code in testng report.
+		// Set system property to allow HTML code in TestNG reports
 		System.setProperty("org.uncommons.reporting.escape-output", "false");
-		log.info("Inside LoginAsManager");
-		driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
-		Assert.assertTrue(isElementPresent(By.xpath(OR.getProperty("addCustomerNav"))), "Login not successfull");
-		log.info("LoginAsManager executed successfully");
-		Reporter.log("LoginAsManager executed successfully");
-		// Adding screenshot link in the report
-		/*Reporter.log("<a target=\"_blank\" href=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\">Screenshot</a>");
-		Reporter.log("<a target=\"_blank\" href=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\"><img src=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\" height= 200 width=200></img></a>");*/
 		
-		Assert.fail("login not successfull");//manually failed the test
+		// Log the start of the login test
+		log.info("Inside LoginAsManager");
+		
+		// Find and click the Bank Manager Login button
+		//driver.findElement(By.xpath(OR.getProperty("bmlbtn"))).click();
+		clicking("bmlbtn_xpath");
+		
+		// Assert that the Add Customer navigation element is present after login
+		Assert.assertTrue(isElementPresent(By.xpath(OR.getProperty("addCustomerNav_xpath"))), "Login not successful");
+		
+		// Log the successful execution of the login test
+		log.info("LoginAsManager executed successfully");
+		
+		// Report the successful execution of the login test
+		Reporter.log("LoginAsManager executed successfully");
+		
+		// Uncomment the following lines to add a screenshot link in the report
+		/*
+		Reporter.log("<a target=\"_blank\" href=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\">Screenshot</a>");
+		Reporter.log("<a target=\"_blank\" href=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\"><img src=\"C:\\Users\\ASUS\\Downloads\\logo.jpg\" height= 200 width=200></img></a>");
+		*/
+		
+		// Manually fail the test to indicate that the login was not successful
+		//Assert.fail("Login not successful");
 	}
 }

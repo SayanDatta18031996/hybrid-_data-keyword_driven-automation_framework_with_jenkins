@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Define a TestNG suite -->
 <suite name="Data Driven Basics">
-	<listeners>
-		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-		<listener class-name="com.testbot.listeners.CustomListeners" />
-	</listeners>
-	<test name="BankManagerLoginTest">
-		<classes>
-			<class name="com.testbot.testcases.BankManagerLoginTest" />
-		</classes>
-	</test>
-	<test name="AddcustomerTest">
-		<classes>
-			<class name="com.testbot.testcases.AddCustomerTest" />
-		</classes>
-	</test>
+    
+    <!-- Define listeners to generate reports and handle test events -->
+    <listeners>
+        <!-- HTML Report listener from ReportNG -->
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <!-- JUnit XML Report listener from ReportNG -->
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+        <!-- Custom listener for additional functionalities -->
+        <listener class-name="com.testbot.listeners.CustomListeners" />
+    </listeners>
+    
+    <!-- Define a test named 'BankManagerLoginTest' -->
+    <test name="BankManagerLoginTest">
+        <classes>
+            <!-- Specify the class that contains the test methods for 'BankManagerLoginTest' -->
+            <class name="com.testbot.testcases.BankManagerLoginTest" />
+        </classes>
+    </test>
+    
+    <!-- Define another test named 'AddcustomerTest' -->
+    <test name="AddcustomerTest">
+        <classes>
+            <!-- Specify the class that contains the test methods for 'AddCustomerTest' -->
+            <class name="com.testbot.testcases.AddCustomerTest" />
+        </classes>
+    </test>
 </suite>
- 
