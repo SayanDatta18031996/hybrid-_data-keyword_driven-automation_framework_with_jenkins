@@ -16,14 +16,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.testbot.utilities.ExcelReader;
 import com.testbot.utilities.ExtentManager;
+import com.testbot.utilities.TestUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -135,7 +139,7 @@ public class TestBase {
 			driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
 		} else if (locator.endsWith("_xpath")) {
 			driver.findElement(By.xpath(OR.getProperty(locator))).click();
-			test.log(Status.INFO, "Clicking on: "+locator);
+			test.log(Status.INFO, "Clicking on: " + locator);
 		} else if (locator.endsWith("_class")) {
 			driver.findElement(By.className(OR.getProperty(locator))).click();
 		} else if (locator.endsWith("_id")) {
@@ -148,10 +152,10 @@ public class TestBase {
 	public void typing(String locator, String value) {
 		if (locator.endsWith("_css")) {
 			driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
-			test.log(Status.INFO, "Typing on: "+locator+" Entered Value is: "+ value);
+			test.log(Status.INFO, "Typing on: " + locator + " Entered Value is: " + value);
 		} else if (locator.endsWith("_xpath")) {
 			driver.findElement(By.xpath(OR.getProperty(locator))).sendKeys(value);
-			test.log(Status.INFO, "Typing on: "+locator+" Entered Value is: "+ value);
+			test.log(Status.INFO, "Typing on: " + locator + " Entered Value is: " + value);
 		} else if (locator.endsWith("_class")) {
 			driver.findElement(By.className(OR.getProperty(locator))).sendKeys(value);
 		} else if (locator.endsWith("_id")) {
@@ -159,6 +163,26 @@ public class TestBase {
 		} else {
 			driver.findElement(By.linkText(OR.getProperty(locator))).sendKeys(value);
 		}
+	}
+
+	public static void verifyEquals(String expected, String actual) throws IOException {
+		try {
+			Assert.assertEquals(expected, actual);
+		} catch (Throwable t) {
+			TestUtil.CaptureScreenshot();
+			// ReportNG
+			Reporter.log("<br>" + "veri1cation failure" + t.getMessage() + "</br>");
+			Reporter.log("<a target=\"_blank\" href=\"" + TestUtil.screenshotPath + "\"><img src=\""
+					+ TestUtil.screenshotPath + "\" height=200 width=200></img></a>");
+			// Extent Report
+			// Log the failure message and exception in the ExtentReports
+			test.log(Status.FAIL, "Verification got Failed with exception: " +t.getMessage() );
+			// Attach the screenshot to the ExtentReports
+			test.fail("Screenshot", MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.screenshotPath).build());
+
+			// Flush the ExtentReports to ensure all information is written to the report
+		}
+
 	}
 
 	@AfterSuite

@@ -1,5 +1,7 @@
 package com.testbot.testcases;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -8,10 +10,11 @@ import com.testbot.base.TestBase;
 
 public class BankManagerLoginTest extends TestBase {
 	@Test
-	public void LoginAsManager() throws InterruptedException {
+	public void LoginAsManager() throws InterruptedException, IOException {
 		// Set system property to allow HTML code in TestNG reports
 		System.setProperty("org.uncommons.reporting.escape-output", "false");
 		
+		verifyEquals("abc", "xyz");
 		// Log the start of the login test
 		log.info("Inside LoginAsManager");
 		
@@ -35,6 +38,6 @@ public class BankManagerLoginTest extends TestBase {
 		*/
 		
 		// Manually fail the test to indicate that the login was not successful
-		//Assert.fail("Login not successful");
+		Assert.fail("Login not successful");
 	}
 }

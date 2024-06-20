@@ -2,11 +2,13 @@ package com.testbot.utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.DataProvider;
 
 import com.testbot.base.TestBase;
 
@@ -24,9 +26,7 @@ public class TestUtil extends TestBase {
         // Create a timestamp to uniquely name the screenshot file
         Date d = new Date();
         String timestamp = d.toString().replace(":", "_").replace(" ", "_");
-        // Alternative method to create a timestamp for the screenshot file name
-        // String timestamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss_zz"));
-
+      
         // Set the screenshot name using the timestamp
         screenshotName = "error_" + timestamp + ".jpg";
 
@@ -36,5 +36,28 @@ public class TestUtil extends TestBase {
         // Copy the screenshot file to the specified path
         FileUtils.copyFile(ScreenshotFile, new File(screenshotPath));
     }
-
+    
+    @DataProvider(name="dataProvider")
+	public Object[][] getData(Method m) {
+		// Define the sheet name to read data from
+		String sheetName = m.getName();
+		
+		// Get the row and column count from the Excel sheet
+		int rows = excel.getRowCount(sheetName);
+		int cols = excel.getColumnCount(sheetName);
+		
+		// Initialize a 2D array to hold the data
+		Object[][] data = new Object[rows - 1][cols];
+		
+		// Loop through the rows and columns to retrieve data from the Excel sheet
+		for (int rowNum = 2; rowNum <= rows; rowNum++) {
+			for (int colNum = 0; colNum < cols; colNum++) {
+				// Store the data in the 2D array
+				data[rowNum - 2][colNum] = excel.getCellData(sheetName, colNum, rowNum);
+			}
+		}
+		
+		// Return the data for use in the test
+		return data;
+	}
 }
