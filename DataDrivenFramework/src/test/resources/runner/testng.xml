@@ -21,11 +21,18 @@
         </classes>
     </test>
     
-    <!-- Define another test named 'AddcustomerTest' -->
+    <!-- Define a test named 'AddcustomerTest' -->
     <test name="AddcustomerTest">
         <classes>
             <!-- Specify the class that contains the test methods for 'AddCustomerTest' -->
             <class name="com.testbot.testcases.AddCustomerTest" />
+        </classes>
+    </test>
+     <!-- Define a test named 'OpenAccountTest' -->
+    <test name="OpenAccountTest">
+        <classes>
+            <!-- Specify the class that contains the test methods for 'OpenAccountTest' -->
+            <class name="com.testbot.testcases.OpenAccountTest" />
         </classes>
     </test>
 </suite>

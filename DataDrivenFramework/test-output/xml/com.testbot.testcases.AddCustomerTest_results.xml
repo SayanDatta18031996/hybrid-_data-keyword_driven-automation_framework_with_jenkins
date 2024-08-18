@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="AddcustomerTest"
-           tests="1"
+           tests="4"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.773">
+           time="26.517">
   <properties />
   
   
-            <testcase name="addCustomer" time="0.773" classname="com.testbot.testcases.AddCustomerTest" />
+            <testcase name="addCustomer" time="6.501" classname="com.testbot.testcases.AddCustomerTest" />
+                <testcase name="addCustomer" time="6.571" classname="com.testbot.testcases.AddCustomerTest" />
+                <testcase name="addCustomer" time="6.941" classname="com.testbot.testcases.AddCustomerTest" />
+                <testcase name="addCustomer" time="6.504" classname="com.testbot.testcases.AddCustomerTest" />
       
 </testsuite>

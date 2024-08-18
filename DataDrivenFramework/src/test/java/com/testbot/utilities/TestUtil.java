@@ -47,7 +47,8 @@ public class TestUtil extends TestBase {
 		int cols = excel.getColumnCount(sheetName);
 		
 		// Initialize a 2D array to hold the data
-		Object[][] data = new Object[rows - 1][cols];
+		//Object[][] data = new Object[rows - 1][cols];
+		Object[][] data = new Object[rows - 1][1];// to use hashtable making the column number 1
 		
 		// Loop through the rows and columns to retrieve data from the Excel sheet
 		for (int rowNum = 2; rowNum <= rows; rowNum++) {

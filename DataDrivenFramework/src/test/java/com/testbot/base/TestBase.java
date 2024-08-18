@@ -12,9 +12,11 @@ import org.apache.logging.log4j.core.config.Configurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -165,6 +167,28 @@ public class TestBase {
 		}
 	}
 
+	static WebElement dropDown;
+	
+	public void select(String locator, String value) {
+		if (locator.endsWith("_css")) {
+			dropDown=driver.findElement(By.cssSelector(OR.getProperty(locator)));
+			test.log(Status.INFO, "Typing on: " + locator + " Entered Value is: " + value);
+		} else if (locator.endsWith("_xpath")) {
+			dropDown=driver.findElement(By.xpath(OR.getProperty(locator)));
+			test.log(Status.INFO, "Typing on: " + locator + " Entered Value is: " + value);
+		} else if (locator.endsWith("_class")) {
+			dropDown=driver.findElement(By.className(OR.getProperty(locator)));
+		} else if (locator.endsWith("_id")) {
+			dropDown=driver.findElement(By.id(OR.getProperty(locator)));
+		} else {
+			dropDown=driver.findElement(By.linkText(OR.getProperty(locator)));
+		}
+		
+		Select select=new Select(dropDown);
+		select.selectByVisibleText(value);
+		test.log(Status.INFO, "Selecting from dropdown " + locator + " Entered Value is: " + value);
+	}
+
 	public static void verifyEquals(String expected, String actual) throws IOException {
 		try {
 			Assert.assertEquals(expected, actual);
@@ -176,7 +200,7 @@ public class TestBase {
 					+ TestUtil.screenshotPath + "\" height=200 width=200></img></a>");
 			// Extent Report
 			// Log the failure message and exception in the ExtentReports
-			test.log(Status.FAIL, "Verification got Failed with exception: " +t.getMessage() );
+			test.log(Status.FAIL, "Verification got Failed with exception: " + t.getMessage());
 			// Attach the screenshot to the ExtentReports
 			test.fail("Screenshot", MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.screenshotPath).build());
 

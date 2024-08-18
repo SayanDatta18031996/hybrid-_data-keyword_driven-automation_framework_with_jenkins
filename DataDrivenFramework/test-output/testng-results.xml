@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
+    <line>
+      <![CDATA[<br>veri1cation failureexpected [xyz] but found [abc]</br>]]>
+    </line>
+    <line>
+      <![CDATA[<a target="_blank" href="D:\Education\Code\Java_Automation_Project\hybrid-_data-keyword_driven-automation_framework_with_jenkins\DataDrivenFramework\target\surefire-reports\html\error_Fri_Aug_02_19_23_54_IST_2024.jpg"><img src="D:\Education\Code\Java_Automation_Project\hybrid-_data-keyword_driven-automation_framework_with_jenkins\DataDrivenFramework\target\surefire-reports\html\error_Fri_Aug_02_19_23_54_IST_2024.jpg" height=200 width=200></img></a>]]>
+    </line>
     <line>
       <![CDATA[LoginAsManager executed successfully]]>
     </line>
   </reporter-output>
-  <suite started-at="2024-06-14T10:24:48Z" name="Data Driven Basics" finished-at="2024-06-14T10:24:49Z" duration-ms="1222">
+  <suite started-at="2024-08-02T13:53:53Z" name="Data Driven Basics" finished-at="2024-08-02T13:54:28Z" duration-ms="34283">
     <groups>
     </groups>
-    <test started-at="2024-06-14T10:24:48Z" name="BankManagerLoginTest" finished-at="2024-06-14T10:24:49Z" duration-ms="335">
+    <test started-at="2024-08-02T13:53:53Z" name="BankManagerLoginTest" finished-at="2024-08-02T13:53:56Z" duration-ms="3028">
       <class name="com.testbot.testcases.BankManagerLoginTest">
-        <test-method signature="LoginAsManager()[pri:0, instance:com.testbot.testcases.BankManagerLoginTest@4f186450]" started-at="2024-06-14T10:24:48Z" name="LoginAsManager" finished-at="2024-06-14T10:24:49Z" duration-ms="282" status="PASS">
+        <test-method signature="LoginAsManager()[pri:0, instance:com.testbot.testcases.BankManagerLoginTest@2dd8239]" started-at="2024-08-02T13:53:53Z" name="LoginAsManager" finished-at="2024-08-02T13:53:56Z" duration-ms="2382" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[<br>veri1cation failureexpected [xyz] but found [abc]</br>]]>
+            </line>
+            <line>
+              <![CDATA[<a target="_blank" href="D:\Education\Code\Java_Automation_Project\hybrid-_data-keyword_driven-automation_framework_with_jenkins\DataDrivenFramework\target\surefire-reports\html\error_Fri_Aug_02_19_23_54_IST_2024.jpg"><img src="D:\Education\Code\Java_Automation_Project\hybrid-_data-keyword_driven-automation_framework_with_jenkins\DataDrivenFramework\target\surefire-reports\html\error_Fri_Aug_02_19_23_54_IST_2024.jpg" height=200 width=200></img></a>]]>
+            </line>
             <line>
               <![CDATA[LoginAsManager executed successfully]]>
             </line>
@@ -19,13 +31,9 @@
         </test-method> <!-- LoginAsManager -->
       </class> <!-- com.testbot.testcases.BankManagerLoginTest -->
     </test> <!-- BankManagerLoginTest -->
-    <test started-at="2024-06-14T10:24:49Z" name="AddcustomerTest" finished-at="2024-06-14T10:24:49Z" duration-ms="845">
+    <test started-at="2024-08-02T13:53:56Z" name="AddcustomerTest" finished-at="2024-08-02T13:54:23Z" duration-ms="26911">
       <class name="com.testbot.testcases.AddCustomerTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:42Z" name="setUp" finished-at="2024-06-14T10:24:48Z" duration-ms="5793" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:49Z" name="addCustomer" data-provider="getData" finished-at="2024-06-14T10:24:49Z" duration-ms="773" status="PASS">
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@5e2a3040]" started-at="2024-08-02T13:53:56Z" name="addCustomer" data-provider="dataProvider" finished-at="2024-08-02T13:54:03Z" duration-ms="6941" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -51,11 +59,118 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addCustomer -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testbot.testcases.AddCustomerTest@10876a6]" started-at="2024-06-14T10:24:49Z" name="tearDown" finished-at="2024-06-14T10:24:50Z" duration-ms="421" status="PASS">
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@5e2a3040]" started-at="2024-08-02T13:54:04Z" name="addCustomer" data-provider="dataProvider" finished-at="2024-08-02T13:54:10Z" duration-ms="6571" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gfhe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[def]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[124.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Customer added successfully]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomer -->
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@5e2a3040]" started-at="2024-08-02T13:54:10Z" name="addCustomer" data-provider="dataProvider" finished-at="2024-08-02T13:54:17Z" duration-ms="6504" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[fdsjg]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[def]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[125.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Customer added successfully]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomer -->
+        <test-method signature="addCustomer(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.AddCustomerTest@5e2a3040]" started-at="2024-08-02T13:54:17Z" name="addCustomer" data-provider="dataProvider" finished-at="2024-08-02T13:54:23Z" duration-ms="6501" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[flkenl]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[def]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[126.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Customer added successfully]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomer -->
+      </class> <!-- com.testbot.testcases.AddCustomerTest -->
+    </test> <!-- AddcustomerTest -->
+    <test started-at="2024-08-02T13:54:23Z" name="OpenAccountTest" finished-at="2024-08-02T13:54:28Z" duration-ms="4316">
+      <class name="com.testbot.testcases.OpenAccountTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.testbot.testcases.OpenAccountTest@e8ea697]" started-at="2024-08-02T13:53:38Z" name="setUp" finished-at="2024-08-02T13:53:53Z" duration-ms="15852" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="openAccount(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testbot.testcases.OpenAccountTest@e8ea697]" started-at="2024-08-02T13:54:23Z" name="openAccount" data-provider="dataProvider" finished-at="2024-08-02T13:54:28Z" duration-ms="4258" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Raju]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Rupee]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Account created successfully]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openAccount -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.testbot.testcases.OpenAccountTest@e8ea697]" started-at="2024-08-02T13:54:28Z" name="tearDown" finished-at="2024-08-02T13:54:28Z" duration-ms="319" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.testbot.testcases.AddCustomerTest -->
-    </test> <!-- AddcustomerTest -->
+      </class> <!-- com.testbot.testcases.OpenAccountTest -->
+    </test> <!-- OpenAccountTest -->
   </suite> <!-- Data Driven Basics -->
 </testng-results>

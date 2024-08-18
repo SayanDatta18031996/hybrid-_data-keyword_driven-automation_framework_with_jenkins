@@ -3,6 +3,7 @@ package com.testbot.testcases;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import com.testbot.base.TestBase;
 import com.testbot.utilities.TestUtil;
@@ -10,7 +11,11 @@ import com.testbot.utilities.TestUtil;
 public class AddCustomerTest extends TestBase {
 
 	@Test(dataProviderClass = TestUtil.class, dataProvider="dataProvider")
-	public void addCustomer(String FirstName, String LastName, String postCode, String alertText) throws InterruptedException {
+	public void addCustomer(String FirstName, String LastName, String postCode, String alertText, String runMode) throws InterruptedException {
+		if(!runMode.equals("Y")) {
+			throw new SkipException("Skkiping the execution as runmode is set as No");
+		}
+		
 		// Log the action of getting the locator for the addCustomer tab
 		log.info("Getting locator for addCustomer tab");
 		
@@ -39,6 +44,7 @@ public class AddCustomerTest extends TestBase {
 		//addCustomerButton.click();
 		clicking("addCustomerButton_xpath");
 		// Wait for the alert to be present
+		Thread.sleep(3000);
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		log.info("Alert present");
 		
@@ -50,5 +56,6 @@ public class AddCustomerTest extends TestBase {
 		
 		// Manually fail the test to indicate that the alert was not found
 		//Assert.fail("Alert not found");
+		Thread.sleep(3000);
 	}
 }
