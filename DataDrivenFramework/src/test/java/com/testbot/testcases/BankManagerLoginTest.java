@@ -14,7 +14,7 @@ public class BankManagerLoginTest extends TestBase {
 		// Set system property to allow HTML code in TestNG reports
 		System.setProperty("org.uncommons.reporting.escape-output", "false");
 		
-		verifyEquals("abc", "abc");// It will verify the result of the element output with the expected 
+		//verifyEquals("abc", "abc");// It will verify the result of the element output with the expected 
 		// Log the start of the login test
 		log.info("Inside LoginAsManager");
 		

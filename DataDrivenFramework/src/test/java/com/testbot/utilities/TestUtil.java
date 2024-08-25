@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.Hashtable;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -49,12 +50,15 @@ public class TestUtil extends TestBase {
 		// Initialize a 2D array to hold the data
 		//Object[][] data = new Object[rows - 1][cols];
 		Object[][] data = new Object[rows - 1][1];// to use hashtable making the column number 1
-		
+		Hashtable<String, String> table=null;
 		// Loop through the rows and columns to retrieve data from the Excel sheet
 		for (int rowNum = 2; rowNum <= rows; rowNum++) {
+			table=new Hashtable<String,String>();
 			for (int colNum = 0; colNum < cols; colNum++) {
 				// Store the data in the 2D array
-				data[rowNum - 2][colNum] = excel.getCellData(sheetName, colNum, rowNum);
+				//data[rowNum - 2][colNum] = excel.getCellData(sheetName, colNum, rowNum);//used for without Hashtable
+				table.put(excel.getCellData(sheetName,colNum, 1),excel.getCellData(sheetName, colNum, rowNum));
+				data[rowNum - 2][0] =table;
 			}
 		}
 		
